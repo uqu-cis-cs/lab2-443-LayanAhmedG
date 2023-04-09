@@ -1,4 +1,5 @@
 package edu.uqu.cs;
+
 /*
  * Lab 2 
  * CS 1312
@@ -21,6 +22,7 @@ public class Garage{
      * private classType [] varName = new classType[size];
      *
      */
+    private Car [] arrayOfCars = new Car[3];
 
     /************ Part 2 **************/
     /**
@@ -29,8 +31,11 @@ public class Garage{
      * you could initialize it to 0
      * Syntax:
      * public dataType varName= value;
+     * 
+     * 
      *
      */
+    public static int countCars = 0;
 
     /************ Part 3 **************/
     /**
@@ -45,6 +50,11 @@ public class Garage{
      *     }
      *}
      */
+    public Garage(){
+        for (int i = 0; i<arrayOfCars.length;i++){
+            arrayOfCars[i]= new Car();
+        }
+    }
 
     /************ Part 4 **************/
     /**
@@ -59,6 +69,45 @@ public class Garage{
      * Syntax:
      * public void methodName(String m)
      */
+    public void addCar(String m){
+
+        boolean check = true;
+
+        for (int i = 0; i< countCars;i++){
+
+            if (arrayOfCars[i].getModel().equals(m)){
+                
+                
+                check = false;
+                break;
+
+
+
+            }
+
+            
+        }
+
+        if (check){
+            Car c = new Car();
+                c.setModel(m);
+                arrayOfCars[countCars] = c;
+                arrayOfCars[countCars].moveCarIn();
+           // arrayOfCars[(countCars+1)].setModel(m);
+            //arrayOfCars[(countCars+1)].moveCarIn();
+            countCars++;
+
+        }
+
+        
+
+
+        }
+
+
+
+
+
 
 
     /************ Part 5 **************/
@@ -71,6 +120,44 @@ public class Garage{
      * public void methodName(String m)
      *
      */
+    public void moveOut(String m){
+
+        boolean check = false;
+        int index = 0;
+
+        for (int i = 0; i< countCars;i++){
+
+            if (arrayOfCars[i].getModel().equals(m)){
+                check = true;
+                index = i;
+                break;
+
+
+
+
+            }
+
+            
+        }
+        if (check){ 
+            
+            
+            
+            
+            
+            arrayOfCars[index].moveCarOut() ;}
+
+
+
+        
+
+
+       
+        
+            
+            
+
+    }
 
 
 
@@ -85,6 +172,36 @@ public class Garage{
      *
      */
 
+     public void moveIn(String m){
+
+        boolean check = true;
+
+        for (int i = 0; i < countCars ; i++){
+            if (arrayOfCars[i].getModel().equals(m)){
+                check = false;
+                
+                
+            }
+
+        }
+
+        
+        if (check){
+            arrayOfCars[countCars+1].setModel(m);
+            
+            arrayOfCars[countCars+1].moveCarIn();
+        
+        
+        }
+
+        
+            
+
+        
+        
+
+     }
+
 
     /************ Part 7 **************/
     /**
@@ -96,6 +213,26 @@ public class Garage{
      *
      */
 
+     public void listCars(){
+
+        System.out.println("All cars in the garage are: ");
+
+        for (int i = 0 ; i<countCars;i++){
+            if (arrayOfCars[i].getInOutGarage()!=false){
+            System.out.println("Car "+ (i+1) + ": "+arrayOfCars[i].getModel());}
+            
+            
+            
+
+        
+            
 
 
-}
+        
+
+     }
+     System.out.println();
+
+
+
+}}
